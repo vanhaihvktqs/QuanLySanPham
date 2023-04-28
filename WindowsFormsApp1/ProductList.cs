@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class ChiTietSanPham : Form
+    public partial class ProductList : BaseForm
     {
-        public ChiTietSanPham()
+        public ProductList()
         {
             InitializeComponent();
         }

@@ -86,46 +86,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChinhSuaSanPham.cs">
+    <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChinhSuaSanPham.Designer.cs">
-      <DependentUpon>ChinhSuaSanPham.cs</DependentUpon>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChiTietSanPham.cs">
+    <Compile Include="ProductEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChiTietSanPham.Designer.cs">
-      <DependentUpon>ChiTietSanPham.cs</DependentUpon>
+    <Compile Include="ProductEdit.Designer.cs">
+      <DependentUpon>ProductEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductDetail.Designer.cs">
+      <DependentUpon>ProductDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\ExtensionMethod.cs" />
     <Compile Include="Common\Utils.cs" />
-    <Compile Include="DanhSachSanPham.cs">
+    <Compile Include="ProductList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DanhSachSanPham.Designer.cs">
-      <DependentUpon>DanhSachSanPham.cs</DependentUpon>
+    <Compile Include="ProductList.Designer.cs">
+      <DependentUpon>ProductList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Database\MySqlDB.cs" />
+    <Compile Include="Common\MySqlDB.cs" />
+    <Compile Include="Database\CategoryDB.cs" />
+    <Compile Include="Database\ProductDB.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CategoryModel.cs" />
+    <Compile Include="Model\ProductModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuanLyDanhMuc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuanLyDanhMuc.Designer.cs">
-      <DependentUpon>QuanLyDanhMuc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLySanPham.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuanLySanPham.Designer.cs">
-      <DependentUpon>QuanLySanPham.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Service\CategoryManagementService.cs" />
-    <EmbeddedResource Include="DanhSachSanPham.resx">
-      <DependentUpon>DanhSachSanPham.cs</DependentUpon>
+    <Compile Include="Service\CategoryService.cs" />
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductList.resx">
+      <DependentUpon>ProductList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -136,12 +136,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="QuanLyDanhMuc.resx">
-      <DependentUpon>QuanLyDanhMuc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuanLySanPham.resx">
-      <DependentUpon>QuanLySanPham.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

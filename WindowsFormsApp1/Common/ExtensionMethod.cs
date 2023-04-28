@@ -8,7 +8,7 @@ using Dic = System.Collections.Generic.Dictionary<string, string>;
 using DicList = System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, string>>;
 using WindowsFormsApp1.Model;
 
-namespace WindowsFormsApp1.Common
+namespace WindowsFormsApp1
 {
     public static class ExtensionMethod
     {

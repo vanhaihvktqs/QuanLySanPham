@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class ChinhSuaSanPham
+    partial class ProductEdit
     {
         /// <summary>
         /// Required designer variable.

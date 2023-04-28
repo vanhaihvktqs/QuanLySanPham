@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class ChiTietSanPham
+    partial class ProductDetail
     {
         /// <summary>
         /// Required designer variable.

@@ -4,20 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
+using System.Drawing;
 
-namespace WindowsFormsApp1.Common
+namespace WindowsFormsApp1
 {
     public static class Utils
     {
         public static string GetSql(string filePath)
         {
-            if (!File.Exists(filePath)) return "";
+            string APP_DIR = Application.StartupPath + "\\Sql\\";
+            if (!File.Exists(APP_DIR + filePath)) return "";
             string sql = "";
-            using (StreamReader stream = new StreamReader(filePath))
+            using (StreamReader stream = new StreamReader(APP_DIR + filePath))
             {
                 sql = stream.ReadToEnd();
             }
             return sql;
+        }
+
+        public static byte[] ImageToByte(Image img)
+        {
+            using (var ms = new MemoryStream())
+            {
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
+        public static Image ByteToImage(byte[] data)
+        {
+            if (data.Length == 0) return null;
+            MemoryStream ms = new MemoryStream(data);
+            Image image = Image.FromStream(ms);
+            return image;
         }
     }
 }
