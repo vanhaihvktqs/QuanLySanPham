@@ -7,7 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace WindowsFormsApp1
+namespace Common
 {
     public static class Utils
     {
@@ -25,6 +25,7 @@ namespace WindowsFormsApp1
 
         public static byte[] ImageToByte(Image img)
         {
+            if (img == null) return null;
             using (var ms = new MemoryStream())
             {
                 img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -33,7 +34,7 @@ namespace WindowsFormsApp1
         }
         public static Image ByteToImage(byte[] data)
         {
-            if (data.Length == 0) return null;
+            if (data == null || data.Length == 0) return null;
             MemoryStream ms = new MemoryStream(data);
             Image image = Image.FromStream(ms);
             return image;

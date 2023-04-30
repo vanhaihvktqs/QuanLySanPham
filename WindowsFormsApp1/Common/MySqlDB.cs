@@ -6,10 +6,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using WindowsFormsApp1.Model;
-using Dic = System.Collections.Generic.Dictionary<string, string>;
+using Model;
 
-namespace WindowsFormsApp1
+namespace Common
 {
     public class MySqlDB
     {
@@ -48,14 +47,14 @@ namespace WindowsFormsApp1
             if (transaction == null) return;
             transaction.Rollback();
         }
-        public List<T> Select<T>(string sql, Dic dbParams = null) where T : BaseModel
+        public List<T> Select<T>(string sql, DBParam dbParams = null) where T : BaseModel
         {
             DataTable dtRet = new DataTable();
             MySqlCommand command = connecttion.CreateCommand();
             command.CommandText = sql;
             if (dbParams != null)
             {
-                foreach (KeyValuePair<string, string> param in dbParams)
+                foreach (KeyValuePair<string, object> param in dbParams)
                 {
                     command.Parameters.AddWithValue(param.Key, param.Value);
                 }
@@ -64,11 +63,11 @@ namespace WindowsFormsApp1
             adapter.Fill(dtRet);
             return ToListModel<T>(dtRet);
         }
-        public int Execute(string sql, Dic dbParams)
+        public int Execute(string sql, DBParam dbParams)
         {
             MySqlCommand command = connecttion.CreateCommand();
             command.CommandText = sql;
-            foreach (KeyValuePair<string, string> param in dbParams)
+            foreach (KeyValuePair<string, object> param in dbParams)
             {
                 command.Parameters.AddWithValue(param.Key, param.Value);
             }
@@ -76,7 +75,7 @@ namespace WindowsFormsApp1
             return iRet;
         }
 
-        private T ToModel<T>(DataRow rowData) where T : BaseModel
+        private T ToModel<T>(DataRow rowData, string[] arrColumns) where T : BaseModel
         {
 
             T model = Activator.CreateInstance<T>();
@@ -85,6 +84,7 @@ namespace WindowsFormsApp1
             {
                 string propName = prop.Name;
                 string colName = "";
+
                 object[] attrs = prop.GetCustomAttributes(true);
                 foreach (object attr in attrs)
                 {
@@ -98,7 +98,14 @@ namespace WindowsFormsApp1
                 {
                     colName = propName;
                 }
-                prop.SetValue(model, rowData.GetValue(colName));
+                if (!arrColumns.Contains(colName)) continue;
+               
+                object objValue = rowData[colName];
+                try
+                {
+                    prop.SetValue(model, objValue);
+                }
+                catch { }
             }
             return model;
         }
@@ -107,9 +114,10 @@ namespace WindowsFormsApp1
             List<T> lst = new List<T>();
             if (dataTable.Rows.Count > 0)
             {
+                string[] arrCol = dataTable.Columns.Cast<DataColumn>().Select(col => col.ColumnName).ToArray();
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
-                    T model = ToModel<T>(dataRow);
+                    T model = ToModel<T>(dataRow, arrCol);
                     lst.Add(model);
                 }
             }

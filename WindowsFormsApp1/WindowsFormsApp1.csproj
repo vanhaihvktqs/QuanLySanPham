@@ -92,6 +92,15 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\clsDataBinding.cs" />
+    <Compile Include="Common\DBParam.cs" />
+    <Compile Include="Database\ProductListDB.cs" />
+    <Compile Include="ExControl\CtrlDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExControl\CtrlDetail.Designer.cs">
+      <DependentUpon>CtrlDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,8 +130,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CategoryService.cs" />
+    <Compile Include="Service\ProductService.cs" />
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExControl\CtrlDetail.resx">
+      <DependentUpon>CtrlDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductDetail.resx">
+      <DependentUpon>ProductDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductList.resx">
       <DependentUpon>ProductList.cs</DependentUpon>
@@ -135,6 +151,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -150,11 +167,34 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Sql\Common\" />
-    <Folder Include="Sql\Screen\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\add2.png" />
+    <Content Include="Sql\Screen\ProductList\GetPageData.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sql\Table\Product\DeleteItems.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sql\Table\Product\UpdateItems.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\detail.png" />
+    <Content Include="Sql\Table\Category\GetMaxId.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sql\Table\Product\GetMaxId.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sql\Table\Product\InsertItems.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sql\Table\Product\SelectItems.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\save.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\search.png" />
     <Content Include="Sql\Table\Category\SelectItems.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

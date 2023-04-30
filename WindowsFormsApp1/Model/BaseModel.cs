@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.Model
+namespace Model
 {
     public class BaseModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string CreateTime { get; set; }
         public string UpdateTime { get; set; }
     }
