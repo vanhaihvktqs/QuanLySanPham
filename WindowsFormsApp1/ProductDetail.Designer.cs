@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
             this.txtName.Location = new System.Drawing.Point(339, 49);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(527, 26);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // label1
             // 
@@ -82,7 +82,7 @@ namespace WindowsFormsApp1
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(527, 114);
-            this.txtDescription.TabIndex = 3;
+            this.txtDescription.TabIndex = 2;
             // 
             // label2
             // 
@@ -98,9 +98,11 @@ namespace WindowsFormsApp1
             this.txtPrice.Location = new System.Drawing.Point(339, 219);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(122, 26);
-            this.txtPrice.TabIndex = 4;
+            this.txtPrice.TabIndex = 3;
             this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
-            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
+            this.txtPrice.Enter += new System.EventHandler(this.txtNumberFocus);
+            this.txtPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumber_KeyDown);
+            this.txtPrice.Leave += new System.EventHandler(this.txtNumberLeave);
             this.txtPrice.Validated += new System.EventHandler(this.txtPrice_Validated);
             // 
             // label3
@@ -128,7 +130,7 @@ namespace WindowsFormsApp1
             this.cbCategory.Location = new System.Drawing.Point(339, 9);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(337, 27);
-            this.cbCategory.TabIndex = 5;
+            this.cbCategory.TabIndex = 0;
             // 
             // label5
             // 
@@ -145,7 +147,9 @@ namespace WindowsFormsApp1
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(122, 26);
             this.txtQuantity.TabIndex = 4;
-            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
+            this.txtQuantity.Enter += new System.EventHandler(this.txtNumberFocus);
+            this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumber_KeyDown);
+            this.txtQuantity.Leave += new System.EventHandler(this.txtNumberLeave);
             // 
             // btnAdd
             // 
@@ -153,7 +157,7 @@ namespace WindowsFormsApp1
             this.btnAdd.Location = new System.Drawing.Point(117, 224);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(95, 32);
-            this.btnAdd.TabIndex = 6;
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -188,7 +192,7 @@ namespace WindowsFormsApp1
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 20, 0);
             this.btnSave.Size = new System.Drawing.Size(120, 55);
-            this.btnSave.TabIndex = 6;
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Lưu";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;

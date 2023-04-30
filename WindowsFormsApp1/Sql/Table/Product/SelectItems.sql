@@ -4,6 +4,7 @@
      , Image
      , Price
      , Quantity
+     , Description
      , CreateTime
      , UpdateTime
   FROM Product

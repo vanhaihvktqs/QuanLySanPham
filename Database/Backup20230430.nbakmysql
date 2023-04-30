@@ -3,8 +3,8 @@
   "General": {
     "Project": "",
     "ProjectOwnerNavicatID": "",
-    "Server": "QuanLySanPham",
-    "Host": "127.0.0.1",
+    "Server": "MySql",
+    "Host": "localhost",
     "Catalog": "",
     "Schema": "quanlysanpham",
     "Comment": "",

@@ -52,14 +52,16 @@ namespace WindowsFormsApp1
             cbCategory.SelectedValue = _Model.CategoryId;
             txtName.Text = _Model.Name;
             txtDescription.Text = _Model.Description;
-            txtPrice.Text = _Model.Price.ToString();
-            txtQuantity.Text = _Model.Price.ToString();
+            txtPrice.Text = _Model.Price.ToString("#,##0");
+            txtQuantity.Text = _Model.Quantity.ToString("#,##0");
             cbCategory.Enabled = false;
         }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!"0123456789".Contains(e.KeyChar)) return;
+            if (!"0123456789".Contains(e.KeyChar)) {
+                e.Handled = true;
+            };
         }
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
@@ -89,8 +91,8 @@ namespace WindowsFormsApp1
             }
             model.Name = txtName.Text;
             model.Description = txtDescription.Text;
-            double price = 0;
-            double.TryParse(txtPrice.Text.Replace(",", ""), out price);
+            int price = 0;
+            int.TryParse(txtPrice.Text.Replace(",", ""), out price);
             model.Price = price;
             int quantity = 1;
             int.TryParse(txtQuantity.Text.Replace(",", ""), out quantity);
@@ -98,6 +100,10 @@ namespace WindowsFormsApp1
             {
                 Bitmap bmp = (Bitmap)picImage.Image;
                 model.Image = Utils.ImageToByte(bmp.CropImage(), picImage.Image.GetImageFormat());
+            }
+            else
+            {
+                model.Image = null;
             }
             model.Quantity = quantity;
             try
@@ -118,6 +124,31 @@ namespace WindowsFormsApp1
             {
                 ShowError(ex.Message);
             }
+        }
+
+        private void txtNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+                return;
+            }
+            if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back) return;
+            if (!"0123456789".Contains(e.KeyCode.ToString()))
+            {
+                e.Handled = true;
+            };
+        }
+        private void txtNumberFocus(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            txt.Text = txt.Text.Replace(",", "");
+        }
+        private void txtNumberLeave(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            if (string.IsNullOrEmpty(txt.Text.Trim())) txt.Text = "0";
+            txt.Text = int.Parse(txt.Text).ToString("#,##0");
         }
     }
 }

@@ -58,6 +58,7 @@ namespace Database
                 dbParam["Image"] = model.Image;
                 dbParam["Price"] = model.Price;
                 dbParam["Quantity"] = model.Quantity;
+                dbParam["Description"] = model.Description;
                 dbParam["CreateTime"] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
                 return connection.Execute(sql, dbParam);
@@ -86,6 +87,7 @@ namespace Database
                 dbParam["Image"] = model.Image;
                 dbParam["Price"] = model.Price;
                 dbParam["Quantity"] = model.Quantity;
+                dbParam["Description"] = model.Description;
                 dbParam["UpdateTime"] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
                 return connection.Execute(sql, dbParam);
