@@ -23,12 +23,12 @@ namespace Common
             return sql;
         }
 
-        public static byte[] ImageToByte(Image img)
+        public static byte[] ImageToByte(Image img, System.Drawing.Imaging.ImageFormat imageFormat)
         {
             if (img == null) return null;
             using (var ms = new MemoryStream())
             {
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                img.Save(ms, imageFormat);
                 return ms.ToArray();
             }
         }

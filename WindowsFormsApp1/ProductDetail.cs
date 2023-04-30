@@ -17,7 +17,6 @@ namespace WindowsFormsApp1
     public partial class ProductDetail : BaseForm
     {
         ProductModel _Model;
-        byte[] imageData;
         public ProductDetail(ProductModel Model = null)
         {
             InitializeComponent();
@@ -40,11 +39,7 @@ namespace WindowsFormsApp1
                 {
                     img = Image.FromStream(stream);
                 }
-                if (img != null)
-                {
-                    imageData = Utils.ImageToByte(img);
-                    picImage.Image = img;
-                }
+                picImage.Image = img;
             }
         }
 
@@ -53,7 +48,6 @@ namespace WindowsFormsApp1
             List<CategoryModel> listCategory = CategoryService.GetAllCategory();
             cbCategory.Binding(listCategory, "Id", "Name");
             if (_Model == null) return;
-            imageData = _Model.Image;
             picImage.Image = Utils.ByteToImage(_Model.Image);
             cbCategory.SelectedValue = _Model.CategoryId;
             txtName.Text = _Model.Name;
@@ -100,7 +94,11 @@ namespace WindowsFormsApp1
             model.Price = price;
             int quantity = 1;
             int.TryParse(txtQuantity.Text.Replace(",", ""), out quantity);
-            model.Image = imageData;
+            if (picImage.Image != null)
+            {
+                Bitmap bmp = (Bitmap)picImage.Image;
+                model.Image = Utils.ImageToByte(bmp.CropImage(), picImage.Image.GetImageFormat());
+            }
             model.Quantity = quantity;
             try
             {
