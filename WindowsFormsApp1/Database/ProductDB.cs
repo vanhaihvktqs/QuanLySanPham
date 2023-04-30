@@ -23,8 +23,8 @@ namespace Database
                 connection.Open();
 
                 DBParam dbParam = new DBParam();
-                dbParam["Id"] = categoryId.ToString();
-                dbParam["CategoryId"] = productId.ToString();
+                dbParam["Id"] = productId.ToString();
+                dbParam["CategoryId"] = categoryId.ToString();
 
                 string sql = Utils.GetSql(SQL_DIR + "SelectItems.sql");
                 var lstInfo = connection.Select<ProductModel>(sql, dbParam);
@@ -109,8 +109,8 @@ namespace Database
                 connection.Open();
 
                 DBParam dbParam = new DBParam();
-                dbParam["Id"] = categoryId.ToString();
-                dbParam["CategoryId"] = productId.ToString();
+                dbParam["Id"] = productId.ToString();
+                dbParam["CategoryId"] = categoryId.ToString();
 
                 string sql = Utils.GetSql(SQL_DIR + "DeleteItems.sql");
                 return connection.Execute(sql, dbParam);

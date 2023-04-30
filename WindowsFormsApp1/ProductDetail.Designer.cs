@@ -99,11 +99,11 @@ namespace WindowsFormsApp1
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(122, 26);
             this.txtPrice.TabIndex = 3;
-            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
+            this.txtPrice.Text = "0";
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_Validated);
             this.txtPrice.Enter += new System.EventHandler(this.txtNumberFocus);
             this.txtPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumber_KeyDown);
             this.txtPrice.Leave += new System.EventHandler(this.txtNumberLeave);
-            this.txtPrice.Validated += new System.EventHandler(this.txtPrice_Validated);
             // 
             // label3
             // 
@@ -147,6 +147,8 @@ namespace WindowsFormsApp1
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(122, 26);
             this.txtQuantity.TabIndex = 4;
+            this.txtQuantity.Text = "0";
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtPrice_Validated);
             this.txtQuantity.Enter += new System.EventHandler(this.txtNumberFocus);
             this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumber_KeyDown);
             this.txtQuantity.Leave += new System.EventHandler(this.txtNumberLeave);

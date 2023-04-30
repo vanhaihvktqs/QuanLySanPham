@@ -82,6 +82,12 @@ namespace WindowsFormsApp1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string msg = ValidateInput();
+            if (!string.IsNullOrEmpty(msg))
+            {
+                ShowError(msg);
+                return;
+            }
             ProductModel model = _Model;
             bool insertFlag = model == null;
             if (model == null)
@@ -124,6 +130,22 @@ namespace WindowsFormsApp1
             {
                 ShowError(ex.Message);
             }
+        }
+
+        private string ValidateInput()
+        {
+            if(cbCategory.SelectedValue == null)
+            {
+                cbCategory.Focus();
+                return "Category is empty!";
+            }
+            if(txtName.Text.Trim() == "")
+            {
+                txtName.Focus();
+                return "Product name is empty!";
+            }
+
+            return "";
         }
 
         private void txtNumber_KeyDown(object sender, KeyEventArgs e)
